@@ -61,7 +61,7 @@ const actions = {
   dec: (state) => q.enq(Object.assign({}, state, {count: state.count - 1})
 }
 
-const Counter = (state, actions) => (
+const Counter = ({state, actions}) => (
   <div>
     <p>Count</p>
     <button onclick={actions.inc}>+</button>
