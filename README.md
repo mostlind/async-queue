@@ -39,6 +39,35 @@ today
 *** 0.5s delay ***
 ?
 */
+```
 
+### Counter With vdom Library
+
+```jsx
+const initialState = {
+  count: 0
+}
+
+q = AQ.from([initialState])
+
+const actions = {
+  inc: (state) => q.enq(Object.assign({}, state, {count: state.count + 1})
+  dec: (state) => q.enq(Object.assign({}, state, {count: state.count - 1})
+}
+
+const Counter = (state, actions) => (
+  <div>
+    <p>Count</p>
+    <button onclick={actions.inc}>+</button>
+    <h2>{state.count}</h2>
+    <button onclick={actions.dec}>-</button>
+  </div>
+)
+
+const render = (state) => {
+  vdomLib.renderToDom(<Counter state={state}, actions={actions} />, document.getElementById('app'))
+}
+
+blockingLoop(q, render)
 
 ```
