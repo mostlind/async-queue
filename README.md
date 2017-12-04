@@ -44,11 +44,17 @@ today
 ### Counter With vdom Library
 
 ```jsx
+const blockingLoop = async (q, fn) => {
+  while(true) {
+    fn(await q.deq())
+  }
+}
+
 const initialState = {
   count: 0
 }
 
-q = AQ.from([initialState])
+const q = AQ.from([initialState])
 
 const actions = {
   inc: (state) => q.enq(Object.assign({}, state, {count: state.count + 1})
