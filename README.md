@@ -56,7 +56,7 @@ const initialState = {
   count: 0
 }
 
-const q = AQ.from([initialState])
+const q = AQ.of(initialState)
 
 const actions = {
   inc: (state) => q.enq(Object.assign(state, {count: state.count + 1})),
