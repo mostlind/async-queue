@@ -13,10 +13,10 @@ const a = ({ queue, waiting }) => ({
 
 const create = () => a({ queue: [], waiting: [] });
 const from = arr => a({ queue: [...arr], waiting: [] });
-const of = (...args) => a({ queue: [...args], waiting: [] });
+const fromArgs = (...args) => a({ queue: [...args], waiting: [] });
 
 export default {
   create,
   from,
-  of
+  of: fromArgs
 };
