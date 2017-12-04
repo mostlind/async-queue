@@ -29,8 +29,8 @@ const blockingLoop = async (q, fn) => {
 }
 
 blockingLoop(q, console.log)
-setTimeout(q.enq('today'), 500)
-setTimeout(q.enq('?'), 1000)
+setTimeout(() => q.enq('today'), 500)
+setTimeout(() => q.enq('?'), 1000)
 /*
 hello
 how
