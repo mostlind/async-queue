@@ -10,13 +10,13 @@ let q = AQ.create() // create queue
 q.enq(4) // enqueue 4
 q.enq(3)
 
-const doSomeStuff = async (q) => {
+const logFirstTwo = async (q) => {
   let a = await q.deq() // dequeue 4
   let b = await q.deq() // dequeue 3
   console.log(a, b)
 }
 
-doSomeStuff() // 4 3
+logFirstTwo() // 4 3
 
 q = AQ.from(['hello', 'how', 'are', 'you']) // create queue from array
 
