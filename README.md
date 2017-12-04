@@ -59,8 +59,8 @@ const initialState = {
 const q = AQ.from([initialState])
 
 const actions = {
-  inc: (state) => q.enq(Object.assign(state, {count: state.count + 1}),
-  dec: (state) => q.enq(Object.assign(state, {count: state.count - 1})
+  inc: (state) => q.enq(Object.assign(state, {count: state.count + 1})),
+  dec: (state) => q.enq(Object.assign(state, {count: state.count - 1}))
 }
 
 const Counter = ({state, actions}) => (
