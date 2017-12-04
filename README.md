@@ -70,8 +70,10 @@ const Counter = (state, actions) => (
   </div>
 )
 
+const appNode = document.getElementById('app')
+
 const render = (state) => {
-  vdomLib.renderToDom(<Counter state={state}, actions={actions} />, document.getElementById('app'))
+  vdomLib.renderToDom(<Counter state={state}, actions={actions} />, appNode)
 }
 
 blockingLoop(q, render)
