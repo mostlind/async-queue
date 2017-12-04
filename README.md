@@ -66,9 +66,9 @@ const actions = {
 const Counter = ({state, actions}) => (
   <div>
     <p>Count</p>
-    <button onclick={actions.inc}>+</button>
+    <button onclick={() => actions.inc(state)}>+</button>
     <h2>{state.count}</h2>
-    <button onclick={actions.dec}>-</button>
+    <button onclick={() => actions.dec(state)}>-</button>
   </div>
 )
 
