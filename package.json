@@ -1,0 +1,19 @@
+{
+  "name": "asyncqueue",
+  "version": "1.0.0",
+  "description": "A tiny asyncronous queue implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostlind/async-queue.git"
+  },
+  "author": "Matt Ostlind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mostlind/async-queue/issues"
+  },
+  "homepage": "https://github.com/mostlind/async-queue#readme"
+}
