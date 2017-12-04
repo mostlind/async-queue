@@ -21,8 +21,10 @@ logFirstTwo() // 4 3
 q = AQ.from(['hello', 'how', 'are', 'you']) // create queue from array
 
 const blockingLoop = async (q, fn) => {
-  while(true) {
-    fn(await q.deq())
+  // while there are items in the queue call the function with item from queue,
+  // if the queue is empty, block until an item is added
+  while(true) { 
+    fn(await q.deq()) 
   }
 }
 
