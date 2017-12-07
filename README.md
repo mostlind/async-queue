@@ -70,6 +70,6 @@ const render = (state) => vdomLib.render(
   while(true) {
     fn(await q.deq())
   }
-})(q, render))
+})(q, render)
 
 ```
