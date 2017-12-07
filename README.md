@@ -60,12 +60,16 @@ const actions = (q) => ({
   dec: ({count}) => q.enq({count: count - 1})
 })
 
-(async (q) => {
+const q = AQ.of({ count: 0 })
+
+const render = (state) => vdomLib.render(
+  <Counter state={state}, actions={actions(q)} />, 
+  document.getElementById('app'))
+
+(async (q, fn) => {
   while(true) {
-    vdomLib.render(
-      <Counter state={await q.deq()}, actions={actions(q)} />, 
-      document.getElementById('app'))
+    fn(await q.deq())
   }
-})(AQ.of({ count: 0 }))
+})(q, render))
 
 ```
