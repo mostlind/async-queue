@@ -46,12 +46,6 @@ today
 ### Counter With vdom Library
 
 ```jsx
-const blockingLoop = async (q, fn) => {
-  while(true) {
-    fn(await q.deq())
-  }
-}
-
 const Counter = ({state, actions}) => (
   <div>
     <p>Count</p>
@@ -61,21 +55,21 @@ const Counter = ({state, actions}) => (
   </div>
 )
 
-const appNode = document.getElementById('app')
-
 const render = (actions) => (state) => {
-  vdomLib.renderToDom(<Counter state={state}, actions={actions} />, appNode)
+  vdomLib.renderToDom(
+    <Counter state={state}, actions={actions} />, 
+    document.getElementById('app'))
 }
 
-const q = AQ.of({ count: 0 })
-
-const actions = {
+const actions = (q) => ({
   inc: ({count}) => q.enq({count: count + 1}),
   dec: ({count}) => q.enq({count: count - 1})
-}
+})
 
-const boundRender = render(actions)
-
-blockingLoop(q, boundRender)
+(async (q) => {
+  while(true) {
+    render(actions(q), await q.deq())
+  }
+})(AQ.of({ count: 0 }))
 
 ```
