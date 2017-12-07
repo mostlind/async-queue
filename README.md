@@ -52,13 +52,6 @@ const blockingLoop = async (q, fn) => {
   }
 }
 
-const q = AQ.of({ count: 0 })
-
-const actions = {
-  inc: (state) => q.enq(Object.assign(state, {count: state.count + 1})),
-  dec: (state) => q.enq(Object.assign(state, {count: state.count - 1}))
-}
-
 const Counter = ({state, actions}) => (
   <div>
     <p>Count</p>
@@ -74,7 +67,12 @@ const render = (actions) => (state) => {
   vdomLib.renderToDom(<Counter state={state}, actions={actions} />, appNode)
 }
 
-const boundRender = render(actions)
+const q = AQ.of({ count: 0 })
+
+const boundRender = render({
+  inc: ({count}) => q.enq({count: count + 1}),
+  dec: ({count}) => q.enq({count: count - 1})
+})
 
 blockingLoop(q, boundRender)
 
