@@ -52,11 +52,7 @@ const blockingLoop = async (q, fn) => {
   }
 }
 
-const initialState = {
-  count: 0
-}
-
-const q = AQ.of(initialState)
+const q = AQ.of({ count: 0 })
 
 const actions = {
   inc: (state) => q.enq(Object.assign(state, {count: state.count + 1})),
