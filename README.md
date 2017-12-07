@@ -55,12 +55,6 @@ const Counter = ({state, actions}) => (
   </div>
 )
 
-const render = (actions) => (state) => {
-  vdomLib.renderToDom(
-    <Counter state={state}, actions={actions} />, 
-    document.getElementById('app'))
-}
-
 const actions = (q) => ({
   inc: ({count}) => q.enq({count: count + 1}),
   dec: ({count}) => q.enq({count: count - 1})
@@ -68,7 +62,9 @@ const actions = (q) => ({
 
 (async (q) => {
   while(true) {
-    render(actions(q), await q.deq())
+    vdomLib.render(
+      <Counter state={await q.deq()}, actions={actions(q)} />, 
+      document.getElementById('app'))
   }
 })(AQ.of({ count: 0 }))
 
