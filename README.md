@@ -69,10 +69,12 @@ const render = (actions) => (state) => {
 
 const q = AQ.of({ count: 0 })
 
-const boundRender = render({
+const actions = {
   inc: ({count}) => q.enq({count: count + 1}),
   dec: ({count}) => q.enq({count: count - 1})
-})
+}
+
+const boundRender = render(actions)
 
 blockingLoop(q, boundRender)
 
