@@ -11,10 +11,8 @@ const a = ({ queue, waiting }) => ({
         })
 });
 
-const create = () => a({ queue: [], waiting: [] });
-const from = arr => a({ queue: [...arr], waiting: [] });
-
 export default {
-  create,
-  from
+  create: () => a({ queue: [], waiting: [] }),
+  from: arr => a({ queue: [...arr], waiting: [] }),
+  of: (...args) => a({ queue: [...args], waiting: [] })
 };
