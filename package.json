@@ -1,7 +1,7 @@
 {
   "name": "asyncqueue",
   "version": "1.0.0",
-  "description": "A tiny asyncronous queue implementation",
+  "description": "A tiny asynchronous queue implementation",
   "main": "index.js",
   "scripts": {
     "test": "ava test"
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/mostlind/async-queue/issues"
   },
-  "homepage": "https://github.com/mostlind/async-queue#readme"
+  "homepage": "https://github.com/mostlind/async-queue#readme",
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^0.24.0"
+  }
 }
